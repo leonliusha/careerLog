@@ -2,10 +2,12 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias alias="defaultUser" type="com.pas.dao.domain.User"/>
+		<typeAlias alias="user" type="com.careerlog.dao.domain.User"/>
+		<typeAlias alias="role" type="com.careerlog.dao.domain.Role"/>
 	</typeAliases>
 
 	<mappers>
-		<mapper resource="com/pas/dao/xml/User.xml" />
+		<mapper resource="mapper/UserMapper.xml" />
+		<mapper resource="mapper/RoleMapper.xml" />
 	</mappers>
 </configuration>
