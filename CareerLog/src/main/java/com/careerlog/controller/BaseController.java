@@ -15,7 +15,7 @@ public class BaseController {
 	}
 	
 	@RequestMapping(value="/welcome/{name}",method=RequestMethod.GET)
-	public String welcomeName(@PathVariable String name, ModelMap model){
+	public String welcomeName(@PathVariable("name") String name, ModelMap model){
 		model.addAttribute("message","Maven Web Project + Spring 3MVC - "+name);
 		return "index";
 	}

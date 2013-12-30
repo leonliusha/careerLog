@@ -14,6 +14,7 @@
   	<jdk.version>1.6</jdk.version>
   </properties>
   
+  <!-- spring begin -->
   <dependencies>
   	<dependency>
   	  <groupId>org.springframework</groupId>
@@ -33,13 +34,71 @@
   	  <version>${spring.version}</version>
   	</dependency>
   	
+  	<dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>${spring.version}</version>
+  	</dependency>
+  	
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-beans</artifactId>
+  		<version>${spring.version}</version>
+  	</dependency>
+  	
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-tx</artifactId>
+  		<version>${spring.version}</version>
+  	</dependency>
+  	
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-aop</artifactId>
+  		<version>${spring.version}</version>
+  	</dependency>
+  	
+  	<dependency>
+  	  <groupId>org.springframework</groupId>
+  	  <artifactId>spring-jdbc</artifactId>
+  	  <version>${spring-version}</version>
+  	</dependency>
+  	<!-- spring ends -->
+  	
+  	<!-- mybatis start -->
+  	<dependency>
+  	  <groupId>org.mybatis</groupId>
+  	  <artifactId>mybatis</artifactId>
+  	  <version>3.2.2</version>
+  	</dependency>
+
+  	<dependency>
+  		<groupId>org.mybatis</groupId>
+  		<artifactId>mybatis-spring</artifactId>
+  		<version>1.2.0</version>
+  	</dependency>
+  	<!-- mybatis end -->
+  	
+  	<dependency>
+  		<groupId>mysql</groupId>
+  		<artifactId>mysql-connector-java</artifactId>
+  		<version>5.1.26</version>
+  	</dependency>
+  	
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
+    
+    <dependency>
+    	<groupId>log4j</groupId>
+    	<artifactId>log4j</artifactId>
+    	<version>1.2.16</version>
+    </dependency>
   </dependencies>
+ 
   <build>
     <finalName>CareerLog</finalName>
     <plugins>

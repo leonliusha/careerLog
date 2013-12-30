@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pas.mapper.IUserMapper">
+	<resultMap type="com.careerlog.dao.domain.User" id="RUser">
+		<id property="userId" column="user_id" />
+		<result property="code" column="code"/>
+		<result property="password" column="password"/>
+		<result property="email" column="email"/>
+		<result property="state" column="state"/>
+	</resultMap>
+	<parameterMap type="com.careerlog.dao.domain.User" id="PUser">
+		<parameter property="userId" javaType="int"/>
+		<parameter property="code"/>
+		<parameter property="password" />
+		<parameter property="email"/>
+		<parameter property="state"/>
+	</parameterMap>
+	
+	<select id="queryUserById" parameterType="int" resultMap="RUser">
+		select user_id, code, password, email, state from User where user_id = #{userId}
+	</select>
+
+	<select id="queryUserByName" parameterType="string" resultMap="RUser">
+		select user_id, code, password, email, state from User where code=#{code}
+	</select>
+	
+	<insert id="insertUser" parameterMap="PUser">
+		insert into User(user_id, code, password, email, state) values(#{userId}, #{code}, #{password}, #{email}, #{state})
+	</insert>
+	
+	<update id="updateUser">
+		update User set code=#{code}, password=#{password}, email=#{email}, state=#{state} where user_id=#{userId}
+	</update>
+</mapper>
