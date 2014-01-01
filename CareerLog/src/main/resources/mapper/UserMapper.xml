@@ -28,7 +28,7 @@
 		insert into User(user_id, code, password, email, state) values(#{userId}, #{code}, #{password}, #{email}, #{state})
 	</insert>
 	
-	<update id="updateUser">
+	<update id="updateUser" parameterMap="PUser">
 		update User set code=#{code}, password=#{password}, email=#{email}, state=#{state} where user_id=#{userId}
 	</update>
 </mapper>
