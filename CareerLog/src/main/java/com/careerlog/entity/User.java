@@ -8,10 +8,10 @@ public class User {
     private String password;  
     private String email;  
     private String state;  
-    private String createBy;  
-    private Date createDatetime;  
-    private String modifyBy;  
-    private Date modifyDatetime;
+    //private String createBy;  
+    //private Date createDatetime;  
+    //private String modifyBy;  
+    //private Date modifyDatetime;
     
     public int getUserId() {
 		return userId;
@@ -43,7 +43,7 @@ public class User {
 	public void setState(String state) {
 		this.state = state;
 	}
-	public String getCreateBy() {
+	/*public String getCreateBy() {
 		return createBy;
 	}
 	public void setCreateBy(String createBy) {
@@ -66,5 +66,5 @@ public class User {
 	}
 	public void setModifyDatetime(Date modifyDatetime) {
 		this.modifyDatetime = modifyDatetime;
-	} 
+	} */
 }
