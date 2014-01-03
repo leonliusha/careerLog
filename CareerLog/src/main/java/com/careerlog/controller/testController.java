@@ -19,16 +19,16 @@ public class testController {
 	@RequestMapping(value="/doTest")
 	public String doTest(ModelMap model){
 		User user = new User();
-		user.setUserId(2);
-		user.setCode("kellyjiaojiao");
-		user.setEmail("jiaojiaokelly@hotmail.com");
-		user.setPassword("19820812");
+		user.setUserId(4);
+		user.setCode("MiuMiu");
+		user.setEmail("MiuMiu@hotmail.com");
+		user.setPassword("20120212");
 		user.setState("Shanghai");
 		userService.insertUser(user);
 		
 		List<User> users1;
 		List<User> users2;
-		users1 = userService.queryUserById(2);
+		users1 = userService.queryUserById(4);
 		users2 = userService.queryUserByName("kellyjiaojiao");
 		model.addAttribute("message","Mybatis test is success.");
 		return "index";

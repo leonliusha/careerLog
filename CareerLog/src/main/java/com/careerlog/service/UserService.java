@@ -23,17 +23,17 @@ public class UserService {
 	
 	@Transactional(propagation=Propagation.REQUIRED)
 	public List<User> queryUserById(int id){
-		return userDao.queryUserById("userMapper.queryUserById", id);
+		return userDao.queryUserById("UserMapper.queryUserById", id);
 	}
 	
 	@Transactional(propagation=Propagation.REQUIRED)
 	public void insertUser(User user){
-		userDao.insertUser("userMapper.insertUser", user);
+		userDao.insertUser("UserMapper.insertUser", user);
 	}
 	
 	@Transactional(propagation=Propagation.REQUIRED)
 	public void updateUser(User user){
-		userDao.updateUser("userMapper.updateUser", user);
+		userDao.updateUser("UserMapper.updateUser", user);
 	}
 	
 
