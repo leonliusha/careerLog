@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.careerlog.mapper.UserMapper">
-	<resultMap type="com.careerlog.dao.domain.User" id="RUser">
+	<resultMap type="com.careerlog.entity.User" id="RUser">
 		<id property="userId" column="user_id" />
 		<result property="code" column="code"/>
 		<result property="password" column="password"/>
 		<result property="email" column="email"/>
 		<result property="state" column="state"/>
 	</resultMap>
-	<parameterMap type="com.careerlog.dao.domain.User" id="PUser">
+	<parameterMap type="com.careerlog.entity.User" id="PUser">
 		<parameter property="userId" javaType="int"/>
 		<parameter property="code"/>
 		<parameter property="password" />
