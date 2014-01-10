@@ -24,7 +24,7 @@
 		<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 			<property name="locations">
 			<list>
-				<value>classpath*:jdbc.properties</value>
+				<value>classpath:jdbc.properties</value>
 			</list>
 			</property>
 		</bean>   
@@ -34,7 +34,7 @@
 		<!-- configuring data source -->
 		<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 			<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-			<property name="url" value="jdbc:mysql://localhost:3306/test"></property>
+			<property name="url" value="jdbc:mysql://localhost:3306/careerlog"></property>
 			<property name="username" value="root"></property>
 			<property name="password" value="rootroot"></property>
 			<!-- Connection Pooling Info -->

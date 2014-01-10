@@ -20,10 +20,11 @@ public class testController {
 	public String doTest(ModelMap model){
 		User user = new User();
 		user.setUserId(4);
-		user.setCode("MiuMiu");
+		user.setUserName("MiuMiu");
 		user.setEmail("MiuMiu@hotmail.com");
 		user.setPassword("20120212");
-		user.setState("Shanghai");
+		user.setFirstName("MiuMiu");
+		user.setLastName("Liu");
 		userService.insertUser(user);
 		
 		List<User> users1;

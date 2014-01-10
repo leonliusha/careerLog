@@ -4,19 +4,28 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.careerlog.entity.loginCommand;
+import com.careerlog.entity.User;
 
 @Controller
 @RequestMapping("/")
 public class BaseController {
-	@RequestMapping(value="/welcome", method=RequestMethod.GET)
+	@RequestMapping(value="/index", method=RequestMethod.GET)
 	public String welcome(ModelMap model){
-		model.addAttribute("message","Maven Web Project + Spring 3 mvc -myBatis");
+		loginCommand login = new loginCommand();
+		User user = new User();
+		model.addAttribute("loginCommand",login);
+		model.addAttribute("User",user);
 		return "index";
 	}
 	
-	@RequestMapping(value="/welcome/{name}",method=RequestMethod.GET)
+	@RequestMapping(value="/index/{name}",method=RequestMethod.GET)
 	public String welcomeName(@PathVariable("name") String name, ModelMap model){
 		model.addAttribute("message","Maven Web Project + Spring 3MVC +myBatis- "+name);
 		return "index";
 	}
+	
+	
 }

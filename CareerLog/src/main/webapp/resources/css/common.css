@@ -1,0 +1,55 @@
+@CHARSET "UTF-8";
+
+body{
+	text-align:center;
+}
+.header{
+	background-color:#456789;
+	height:150px;
+}
+.careerLog-logo{
+	background-image:url(../images/FalconIcon.gif);
+	background-repeat:no-repeat;
+	background-position:center left;
+	width:380px;
+	height:150px;
+	display:inline-block;
+}
+
+.simple-left{
+	display:inline;
+	float:left;
+}
+
+.simple-right{
+	display:inline;
+	float:right;
+}
+
+.header-banner{
+	width:1000px;
+	margin:0 auto;
+}
+
+#loginSection{
+	padding-top:30px;
+}
+
+#loginButton{
+	float:left;
+	padding-left:53px;
+}
+
+.contentSection{
+	width:1000px;
+	margin:0 auto;
+}
+
+#introduction{
+	width:500px;
+	padding-right:10px;
+}
+
+#indexRegistration{
+	width:400px;
+}

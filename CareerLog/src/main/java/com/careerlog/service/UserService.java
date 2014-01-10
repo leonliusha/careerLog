@@ -17,8 +17,8 @@ public class UserService {
 	
 	@SuppressWarnings("rawtypes")
 	@Transactional(propagation=Propagation.REQUIRED, readOnly=true)
-	public List<User> queryUserByName(String name){
-		return userDao.queryUserByName("UserMapper.queryUserByName", name);
+	public List<User> queryUserByName(String userName){
+		return userDao.queryUserByName("UserMapper.queryUserByName", userName);
 	}
 	
 	@Transactional(propagation=Propagation.REQUIRED)

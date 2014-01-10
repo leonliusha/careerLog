@@ -4,26 +4,23 @@ import java.util.Date;
 
 public class User {  
     private int userId;  
-    private String code;  
+    private String userName;  
     private String password;  
     private String email;  
-    private String state;  
-    //private String createBy;  
-    //private Date createDatetime;  
-    //private String modifyBy;  
-    //private Date modifyDatetime;
-    
+    private String firstName;
+    private String lastName;
+    //private String registrationDate;
     public int getUserId() {
 		return userId;
 	}
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	public String getCode() {
-		return code;
+	public String getUserName() {
+		return userName;
 	}
-	public void setCode(String code) {
-		this.code = code;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	public String getPassword() {
 		return password;
@@ -37,12 +34,31 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getState() {
-		return state;
+	public String getFirstName() {
+		return firstName;
 	}
-	public void setState(String state) {
-		this.state = state;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	/*public String getRegistrationDate() {
+		return registrationDate;
+	}
+	public void setRegistrationDate(String registrationDate) {
+		this.registrationDate = registrationDate;
+	}*/
+	
+    //private String createBy;  
+    //private Date createDatetime;  
+    //private String modifyBy;  
+    //private Date modifyDatetime;
+    
+    
 	/*public String getCreateBy() {
 		return createBy;
 	}

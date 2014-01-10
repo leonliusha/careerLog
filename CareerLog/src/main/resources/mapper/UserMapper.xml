@@ -3,32 +3,34 @@
 <mapper namespace="UserMapper">
 	<resultMap type="com.careerlog.entity.User" id="RUser">
 		<id property="userId" column="user_id" />
-		<result property="code" column="code"/>
+		<result property="userName" column="user_name"/>
 		<result property="password" column="password"/>
 		<result property="email" column="email"/>
-		<result property="state" column="state"/>
+		<result property="firstName" column="first_name"/>
+		<result property="lastName" column="last_name"/>
 	</resultMap>
 	<parameterMap type="com.careerlog.entity.User" id="PUser">
 		<parameter property="userId" javaType="int"/>
-		<parameter property="code"/>
+		<parameter property="userName"/>
 		<parameter property="password" />
 		<parameter property="email"/>
-		<parameter property="state"/>
+		<parameter property="firstName"/>
+		<parameter property="lastName"/>
 	</parameterMap>
 	
 	<select id="queryUserById" parameterType="int" resultMap="RUser">
-		select user_id, code, password, email, state from User where user_id = #{userId}
+		select user_id, user_name, password, email, first_name, last_name from Users where user_id = #{userId}
 	</select>
 
 	<select id="queryUserByName" parameterType="string" resultMap="RUser">
-		select user_id, code, password, email, state from User where code=#{code}
+		select user_id, user_name, password, email, first_name,last_name from Users where user_name=#{userName}
 	</select>
 	
 	<insert id="insertUser" parameterMap="PUser">
-		insert into User(user_id, code, password, email, state) values(#{userId}, #{code}, #{password}, #{email}, #{state})
+		insert into Users(user_id, user_name, password, email, first_name,last_name) values(#{userId}, #{userName}, #{password}, #{email}, #{firstName}, #{lastName})
 	</insert>
 	
 	<update id="updateUser" parameterMap="PUser">
-		update User set code=#{code}, password=#{password}, email=#{email}, state=#{state} where user_id=#{userId}
+		update Users set user_name=#{userName}, password=#{password}, email=#{email}, first_name=#{firstName}, last_name=#{lastName} where user_id=#{userId}
 	</update>
 </mapper>
