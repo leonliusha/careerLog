@@ -18,19 +18,29 @@
 		<parameter property="lastName"/>
 	</parameterMap>
 	
+	
+	
 	<select id="queryUserById" parameterType="int" resultMap="RUser">
-		select user_id, user_name, password, email, first_name, last_name from Users where user_id = #{userId}
+		select * from Users where user_id = #{userId}
 	</select>
 
 	<select id="queryUserByName" parameterType="string" resultMap="RUser">
-		select user_id, user_name, password, email, first_name,last_name from Users where user_name=#{userName}
+		select * from Users where user_name=#{userName}
 	</select>
 	
-	<insert id="insertUser" parameterMap="PUser">
-		insert into Users(user_id, user_name, password, email, first_name,last_name) values(#{userId}, #{userName}, #{password}, #{email}, #{firstName}, #{lastName})
+	<insert id="insertUser" parameterMap="PUser">	
+		<selectKey resultType="int" order="AFTER" keyProperty="userId">
+			select last_insert_id() as userId;
+		</selectKey>
+		insert into Users(user_name, password, email, first_name,last_name) values(#{userName}, #{password}, #{email}, #{firstName}, #{lastName})
 	</insert>
 	
 	<update id="updateUser" parameterMap="PUser">
 		update Users set user_name=#{userName}, password=#{password}, email=#{email}, first_name=#{firstName}, last_name=#{lastName} where user_id=#{userId}
 	</update>
+	
+	<select id="queryUserByNameAndPassword" parameterType="com.careerlog.entity.loginCommand" resultMap="RUser">
+		select * from Users where user_name=#{userName} and password=#{password}
+	</select>
+	 
 </mapper>

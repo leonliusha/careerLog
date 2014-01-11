@@ -8,6 +8,7 @@
 
 	<typeAliases>
 		<typeAlias alias="user" type="com.careerlog.entity.User"/>
+		<typeAlias alias="loginCommand" type="com.careerlog.entity.loginCommand" />
 	</typeAliases>
 
 	<mappers>

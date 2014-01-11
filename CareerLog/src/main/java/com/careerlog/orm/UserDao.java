@@ -23,6 +23,9 @@ public class UserDao extends SqlSessionDaoSupport{
 		return getSqlSession().selectList(key, id);
 	}
 	
+	public User queryUserByNameAndPassword(String key, Object object){
+		return getSqlSession().selectOne(key, object);
+	}
 	
 
 }

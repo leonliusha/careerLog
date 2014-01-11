@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.careerlog.entity.User;
 import com.careerlog.orm.UserDao;
+import com.careerlog.entity.loginCommand;
 
 @Service(value="userService")
 @Transactional(rollbackFor=Exception.class)
@@ -19,6 +20,10 @@ public class UserService {
 	@Transactional(propagation=Propagation.REQUIRED, readOnly=true)
 	public List<User> queryUserByName(String userName){
 		return userDao.queryUserByName("UserMapper.queryUserByName", userName);
+	}
+	
+	public User queryUserByNameAndPassword(loginCommand login){
+		return userDao.queryUserByNameAndPassword("UserMapper.queryUserByNameAndPassword", login);
 	}
 	
 	@Transactional(propagation=Propagation.REQUIRED)

@@ -20,7 +20,7 @@ public class signinController {
 	@RequestMapping(method=RequestMethod.POST)
 	public String signinHandler(@ModelAttribute("User") User user, BindingResult result,SessionStatus status, ModelMap model){
 		userService.insertUser(user);
-		model.addAttribute("User", user);
+		model.addAttribute("UserId", user.getUserId());
 		return "loginSuccess";
 	}
 }

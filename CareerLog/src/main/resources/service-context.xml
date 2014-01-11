@@ -62,7 +62,7 @@
 	   	<tx:annotation-driven transaction-manager="transactionManager" />
 	   
 	    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-	    	<property name="basePackage" value="com.careerlog.mapper, com.careerLog.dao"></property>
+	    	<property name="basePackage" value="com.careerlog.mapper"></property>
 	    	<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
 	    </bean>
 	   

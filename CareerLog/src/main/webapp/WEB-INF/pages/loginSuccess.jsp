@@ -7,8 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
- <h2>user name is: "${user.userName}"</h2>
- <h3>password is: "${user.password}"</h3>
-
+ <h2>user id is: ${userId}</h2>
+ <h2>user name is:${userName}</h2>
 </body>
 </html>
