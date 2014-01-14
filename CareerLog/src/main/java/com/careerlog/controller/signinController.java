@@ -21,6 +21,6 @@ public class signinController {
 	public String signinHandler(@ModelAttribute("User") User user, BindingResult result,SessionStatus status, ModelMap model){
 		userService.insertUser(user);
 		model.addAttribute("UserId", user.getUserId());
-		return "loginSuccess";
+		return "UserHomePage";
 	}
 }

@@ -27,5 +27,9 @@ public class UserDao extends SqlSessionDaoSupport{
 		return getSqlSession().selectOne(key, object);
 	}
 	
+	public List<User> queryFriendById(String key,Serializable id){
+		return getSqlSession().selectList(key, id);
+	}
+	
 
 }

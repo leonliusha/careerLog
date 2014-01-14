@@ -43,4 +43,7 @@
 		select * from Users where user_name=#{userName} and password=#{password}
 	</select>
 	 
+	<select id="queryFriendById" parameterType="int" resultMap="RUser">
+		select * from Users where user_id in (select friend_id from friends where user_id = #{userId})
+	</select>
 </mapper>

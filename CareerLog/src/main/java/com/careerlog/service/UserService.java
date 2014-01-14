@@ -41,5 +41,8 @@ public class UserService {
 		userDao.updateUser("UserMapper.updateUser", user);
 	}
 	
+	public List<User> queryFriendById(int id){
+		return userDao.queryFriendById("UserMapper.queryFriendById", id);
+	}
 
 }

@@ -8,9 +8,11 @@ import org.springframework.web.bind.support.*;
 import org.springframework.validation.BindingResult;
 import org.springframework.ui.ModelMap;
 import javax.annotation.Resource;
+import java.util.List;
 import com.careerlog.entity.loginCommand;
 import com.careerlog.service.UserService;
 import com.careerlog.entity.User;
+
 @Controller
 
 @RequestMapping(value="/login")
@@ -32,9 +34,13 @@ public class loginController {
 			return "index";
 		}
 		else{
+			List<User> friends = userService.queryFriendById(user.getUserId());
 			model.addAttribute("userName",user.getUserName());
 			model.addAttribute("userId",user.getUserId());
-			return "loginSuccess";
+			model.addAttribute("friendNumber",friends.size());
+			System.out.println("userName is:"+user.getUserName());
+			System.out.println("friend number is:" + friends.size());
+			return "UserHomePage";
 		}
 	}
 	
