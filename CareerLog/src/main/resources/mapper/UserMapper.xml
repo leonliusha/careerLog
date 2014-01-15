@@ -20,12 +20,12 @@
 	
 	
 	
-	<select id="queryUserById" parameterType="int" resultMap="RUser">
+	<select id="queryUserById" parameterType="int" resultType="user">
 		select * from Users where user_id = #{userId}
 	</select>
 
-	<select id="queryUserByName" parameterType="string" resultMap="RUser">
-		select * from Users where user_name=#{userName}
+	<select id="queryUserByName" parameterType="String" resultMap="RUser">
+		select * from Users where user_name like CONCAT('%',#{userName},'%')
 	</select>
 	
 	<insert id="insertUser" parameterMap="PUser">	
@@ -39,7 +39,7 @@
 		update Users set user_name=#{userName}, password=#{password}, email=#{email}, first_name=#{firstName}, last_name=#{lastName} where user_id=#{userId}
 	</update>
 	
-	<select id="queryUserByNameAndPassword" parameterType="com.careerlog.entity.loginCommand" resultMap="RUser">
+	<select id="queryUserByNameAndPassword" parameterType="loginCommand" resultMap="RUser">
 		select * from Users where user_name=#{userName} and password=#{password}
 	</select>
 	 

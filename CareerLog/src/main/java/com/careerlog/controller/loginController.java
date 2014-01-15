@@ -38,8 +38,6 @@ public class loginController {
 			model.addAttribute("userName",user.getUserName());
 			model.addAttribute("userId",user.getUserId());
 			model.addAttribute("friendNumber",friends.size());
-			System.out.println("userName is:"+user.getUserName());
-			System.out.println("friend number is:" + friends.size());
 			return "UserHomePage";
 		}
 	}

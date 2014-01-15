@@ -36,8 +36,6 @@
 			<property name="useCodeAsDefaultMessage" value="true"></property>
 		</bean>
 		
-		<mvc:resources mapping="/resources/**" location="/resources/" />
-		
 		<bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"/>
 		
 		
