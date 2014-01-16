@@ -1,6 +1,5 @@
 package com.careerlog.orm;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
-import org.springframework.stereotype.Repository;
 import com.careerlog.entity.User;
 import java.io.Serializable;
 import java.util.List;

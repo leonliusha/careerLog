@@ -9,9 +9,11 @@
 	<typeAliases>
 		<typeAlias alias="user" type="com.careerlog.entity.User"/>
 		<typeAlias alias="loginCommand" type="com.careerlog.entity.loginCommand" />
+		<typeAlias alias="friend" type="com.careerlog.entity.Friend"/>
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="mapper/UserMapper.xml"/>
+		<mapper resource="mapper/FriendMapper.xml" />
 	</mappers>
 </configuration>

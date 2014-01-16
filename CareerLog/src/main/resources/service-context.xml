@@ -30,6 +30,7 @@
 		</bean>   
 		
 		<bean id="UserDao" class="com.careerlog.orm.UserDao" />
+		<bean id="FriendDao" class="com.careerlog.orm.FriendDao"/>
 		
 		<!-- configuring data source -->
 		<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">

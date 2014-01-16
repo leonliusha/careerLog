@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="FriendMapper">
+	<resultMap type="com.careerlog.entity.User" id="RUser">
+		<id property="userId" column="user_id" />
+		<result property="userName" column="user_name"/>
+		<result property="password" column="password"/>
+		<result property="email" column="email"/>
+		<result property="firstName" column="first_name"/>
+		<result property="lastName" column="last_name"/>
+	</resultMap>
+	
+	<resultMap type="com.careerlog.entity.Friend" id="RFriend">
+		<id property="userId" column="user_id" />
+		<id property="friendId" column="friend_id"/>
+	</resultMap>
+	
+	<parameterMap type="com.careerlog.entity.User" id="PUser">
+		<parameter property="userId" javaType="int"/>
+		<parameter property="userName"/>
+		<parameter property="password" />
+		<parameter property="email"/>
+		<parameter property="firstName"/>
+		<parameter property="lastName"/>
+	</parameterMap>
+
+	<insert id="insertFriend" parameterType="Friend">
+		insert into friends (user_id, friend_id) values (#{userId},#{friendId})
+	</insert>
+	
+	<select id="friendsCount" parameterType="int" resultType="int">
+		select COUNT(*) from friends where user_id=#{userId}
+	</select>
+	
+	<select id="queryFriendsByName" parameterType="String" resultMap="RUser">
+		select * from Users where user_id in (select friend_id from Friends where user_id = (select user_id from Users where user_name = #{userName}))
+	</select>
+	</mapper>

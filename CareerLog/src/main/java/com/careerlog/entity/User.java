@@ -1,7 +1,5 @@
 package com.careerlog.entity;
 
-import java.util.Date;
-
 public class User {  
     private int userId;  
     private String userName;  
