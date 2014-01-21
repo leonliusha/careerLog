@@ -1,5 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@ include file="meta_taglib.jsp" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html>
 
 <head>
@@ -14,7 +18,7 @@
 		<div class="header">
 			<div class="contentSection">
 				<div id="logoSection" class="simple-left">
-					<a class="simple-left" href="http://localhost:8080/CareerLog/index">
+					<a class="simple-left" href="http://localhost:8080/CareerLog/">
 						<i class="careerLog-logo"></i>
 					</a>
 				</div>
@@ -23,19 +27,19 @@
 						<div id="loginTable">
 							<table>
 							<tr>
-								<td><spring:message code="common.userName"/></td>
+								<td><spring:message code="common.userName" text="User Name"/></td>
 								<td><form:input path="userName" class="text textarea invalidate-username"  autocomplete="off" /></td>
 								<td><form:errors path="userName" class="errors" /></td>
 							</tr>
 							<tr>
-								<td><spring:message code="common.password"/></td>
+								<td><spring:message code="common.password" text="Password"/></td>
 								<td><form:password path="password" class="text textarea"/></td>
 								<td><form:errors path="password" class="errors"/></td>
 							</tr>
 							</table>
 						</div>
 						<div id="loginButton">
-							<input type="submit" value="<spring:message code="common.button.login"/>" name="submit" class="submitbutton"/>
+							<input type="submit" value="<spring:message code="common.button.login" text="Login"/>" name="submit" class="submitbutton"/>
 						</div>					
 				</form:form>
 				</div>
@@ -49,38 +53,38 @@
 				<form:form method="POST" modelAttribute="User" action="signIn">
 					<table>
 						<tr>
-							<td><spring:message code="common.signin.userName"/></td>
+							<td><spring:message code="common.signin.userName" text="User Name"/></td>
 							<td><form:input path="userName" class="" /></td>
 							<td><form:errors path="userName" class="errors"/></td>
 						</tr>
 						<tr>
-							<td><spring:message code="common.signin.email"/></td>
+							<td><spring:message code="common.signin.email" text="Email"/></td>
 							<td><form:input path="email" class=""/></td>
 							<td><form:errors path="email" class="errors"/></td>
 						</tr>
 						<tr>
-							<td><spring:message code="common.signin.re-email"/></td>
+							<td><spring:message code="common.signin.re-email" text="Email Again"/></td>
 							<td><input type="text" /></td>
 							<td></td>
 						</tr>
 						<tr>
-							<td><spring:message code="common.signin.password"/></td>
+							<td><spring:message code="common.signin.password" text="Password"/></td>
 							<td><form:password path="password" class=""/></td>
 							<td><form:errors path="password" class="errors"/></td>
 						</tr>
 						<tr>
-							<td><spring:message code="common.signin.lastName"/></td>
+							<td><spring:message code="common.signin.lastName" text="Last Name"/></td>
 							<td><form:input path="lastName" class=""/></td>
  							<td><form:errors path="lastName" class="errors"/></td>
 						</tr>
 						<tr>
-							<td><spring:message code="common.signin.firstName"/></td>
+							<td><spring:message code="common.signin.firstName" text="First Name"/></td>
 							<td><form:input path="firstName" class=""/></td>
  							<td><form:errors path="firstName" class="errors"/></td>
 						</tr>
 					</table>
 					<div id="signinButton">
-						<input type="submit" value="<spring:message code="common.sign-in"/>" name="submit" class="submitbutton" />
+						<input type="submit" value="<spring:message code="common.sign-in" text="Sign In"/>" name="submit" class="submitbutton" />
 					</div>
 				</form:form>
 			</div>

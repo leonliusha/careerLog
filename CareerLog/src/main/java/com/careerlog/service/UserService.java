@@ -43,5 +43,9 @@ public class UserService {
 	public List<User> queryFriendById(int id){
 		return userDao.queryFriendById("UserMapper.queryFriendById", id);
 	}
+	
+	public User fetchUserByUserName(String userName){
+		return userDao.fetchUserByUserName("UserMapper.fetchUserByUserName", userName);
+	}
 
 }

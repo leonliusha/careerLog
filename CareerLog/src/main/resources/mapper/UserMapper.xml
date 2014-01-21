@@ -24,6 +24,10 @@
 		select * from Users where user_id = #{userId}
 	</select>
 
+	<select id="fetchUserByUserName" parameterType="String" resultMap="RUser">
+		select * from Users where user_name = #{userName}
+	</select>
+
 	<select id="queryUserByName" parameterType="String" resultMap="RUser">
 		select * from Users where user_name like CONCAT('%',#{userName},'%')
 	</select>

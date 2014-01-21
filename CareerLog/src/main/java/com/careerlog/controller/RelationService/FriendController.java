@@ -39,7 +39,7 @@ public class FriendController {
 			return "peopleSearchingPage";
 		}
 		else
-			return "UserHomePage";
+			return "MyPage";
 	}
 	
 	@RequestMapping(value="/findPeople/addUserToFriends",method=RequestMethod.POST)

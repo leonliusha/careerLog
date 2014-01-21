@@ -23,6 +23,6 @@ public class signinController {
 		userService.insertUser(user);
 		session.setAttribute("user",user);
 		model.addAttribute("UserId", user.getUserId());
-		return "UserHomePage";
+		return "MyPage";
 	}
 }

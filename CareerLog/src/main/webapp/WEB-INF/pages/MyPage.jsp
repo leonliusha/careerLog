@@ -8,8 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
- <h2>user id is: ${sessionScope.user.userId}</h2>
- <h2>user name is:${userName}</h2>
+ <h2>My ID is: ${sessionScope.user.userId}</h2>
+ <h2>My User Name is: ${sessionScope.user.userName}</h2>
+ <h2>user name is:${fetchedUser.userName}</h2>
  <div class="contentSection">
  	<div class="sectionName"><a href="${pageContext.request.contextPath}/friends/${userName}"><spring:message code="common.friends.friends"/>${friendsCount}</a></div>		
 </div>
