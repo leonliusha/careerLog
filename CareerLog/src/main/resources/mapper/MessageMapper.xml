@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MessageMapper">
+	<resultMap type="com.careerlog.entity.Message" id="RMessage">
+		<id property="messageId" column="message_id"/>
+		<result property="userId" column="user_id"/>
+		<result property="user_name" column="userName"/>	
+		<result property="title" column="title"/>
+		<result property="text" column="text"/>
+		<result property="creationDate" column="creation_date"/>
+		<result property="lastEditDate" column="last_edit_date"/>
+		<result property="tags" column="tags"/>
+		<result property="messageTypeId" column="message_type_id"/>
+		<result property="viewCount" column="view_count"/>
+		<result property="score" column="score"/>
+		<result property="commentCount" column="comment_count"/>
+		<result property="parentId" column="parent_id"/>
+	</resultMap>
+	
+	<select id="queryMessageCountById" parameterType="java.util.Map" resultType="int">
+		select COUNT(*) from Messages where user_id = #{userId} and message_type_id = #{messageTypeId}
+	</select>
+	
+	<select id="queryMessageCountByUserName" parameterType="java.util.Map" resultType="int">
+		select COUNT(*) from Messages where user_name = #{userName} and message_type_id = #{messageTypeId}
+	</select>
+	
+	<insert id="insertMessage" parameterType="message">
+		<selectKey resultType="int" order="AFTER" keyProperty="userId">
+			select last_insert_id() as messageId;
+		</selectKey>
+		insert into Messages(user_id,user_name,title,text,creation_date,last_edit_date,tags,message_type_id,view_count,score,comment_count,parent_id) 
+					values(#{userId},#{userName},#{title},#{text},#{creationDate},#{lastEditDate},#{tags},#{messageTypeId},#{viewCount},#{score},#{commentCount},#{parentId})
+	</insert>
+
+
+</mapper>

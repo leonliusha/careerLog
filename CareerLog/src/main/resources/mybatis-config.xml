@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
+	<properties>
+		<property name="dialect" value="mysql"></property>
+		<property name="databaseType" value="mysql"></property>	
+	</properties>
+	
+	
 	<settings>
 		<!-- changes from the defaults -->
 		<setting name="lazyLoadingEnabled" value="false" />
@@ -10,10 +17,17 @@
 		<typeAlias alias="user" type="com.careerlog.entity.User"/>
 		<typeAlias alias="loginCommand" type="com.careerlog.entity.loginCommand" />
 		<typeAlias alias="friend" type="com.careerlog.entity.Friend"/>
+		<typeAlias alias="message" type="com.careerlog.entity.Message"/>
 	</typeAliases>
+		
+	<plugins>
+		<plugin interceptor="com.careerlog.interceptor.PaginationInterceptor"></plugin>
+	</plugins>
 
 	<mappers>
 		<mapper resource="mapper/UserMapper.xml"/>
 		<mapper resource="mapper/FriendMapper.xml" />
+		<mapper resource="mapper/MessageMapper.xml"/>
 	</mappers>
+	
 </configuration>

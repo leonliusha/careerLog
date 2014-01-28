@@ -62,7 +62,8 @@ public class FriendController {
 	
 	@RequestMapping(value="/friends/{userName}")
 	public String listFriends(@PathVariable("userName") String userName, ModelMap model){
-		if(userName!=null && !userName.equals("")){
+		if(userName!=null && !userName.equals(""))//should be changed
+		{
 			List<User> friends = friendService.queryFriendsByName(userName);
 			model.addAttribute("friendsList", friends);
 			return "FriendsPage";

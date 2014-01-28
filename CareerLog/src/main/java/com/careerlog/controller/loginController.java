@@ -25,7 +25,7 @@ public class loginController {
 	@Resource(name="friendService")
 	FriendService friendService;
 	
-	@RequestMapping(value="login",method=RequestMethod.GET)
+	@RequestMapping(method=RequestMethod.GET)
 	public String doLogin(ModelMap model){
 		model.addAttribute("User",new User());
 		model.addAttribute("loginCommand",new loginCommand());
