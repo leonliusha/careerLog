@@ -28,11 +28,21 @@
 	
 	<insert id="insertMessage" parameterType="message">
 		<selectKey resultType="int" order="AFTER" keyProperty="userId">
-			select last_insert_id() as messageId;
+			select last_insert_id() as messageId
 		</selectKey>
 		insert into Messages(user_id,user_name,title,text,creation_date,last_edit_date,tags,message_type_id,view_count,score,comment_count,parent_id) 
 					values(#{userId},#{userName},#{title},#{text},#{creationDate},#{lastEditDate},#{tags},#{messageTypeId},#{viewCount},#{score},#{commentCount},#{parentId})
 	</insert>
 
+	<select id="queryMessageByTitle" parameterType="String" resultMap="RMessage">
+		select * from Messages where title = #{title}
+	</select>
+	 
+	<select id="queryMessageByPage" parameterType="page" resultMap="RMessage">
+		select * from Messages where user_name = #{params.userName} and message_type_id = #{params.messageTypeId} order by creation_date
+	</select>
 
+	<select id="queryMessageById" parameterType="int" resultMap="RMessage">
+		select * from Messages where message_id = #{messageId}
+	</select>
 </mapper>

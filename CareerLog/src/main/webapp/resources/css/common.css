@@ -2,7 +2,15 @@
 
 body{
 	text-align:center;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
 }
+
+a:link a:visited{
+	color:#2D64B3;
+	text-decoration:none;
+}
+
 .header{
 	background-color:#456789;
 	height:150px;
@@ -56,4 +64,24 @@ body{
 
 .border-style{
 	border:1px solid #E5E5E5;
+}
+
+.itemContent{
+	width:300px;
+	heigh:30px;
+	line-heigh:20px;
+	border:#B9B9B9 solid 1px;
+	background-color:#F9F9F9;
+	margin:5px;
+}
+
+.itemContent a{
+	display:block;
+	width:150px;
+	float:left;
+	overflow:hidden;
+	white-space:nowrap;
+	padding-right:7px;
+	text-overflow:ellipsis;
+	-o-text-overflow:ellipsis;
 }

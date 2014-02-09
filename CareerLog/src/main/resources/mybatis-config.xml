@@ -3,7 +3,7 @@
 <configuration>
 
 	<properties>
-		<property name="dialect" value="mysql"></property>
+		<!--  <property name="dialect" value="mysql"></property>-->
 		<property name="databaseType" value="mysql"></property>	
 	</properties>
 	
@@ -18,10 +18,14 @@
 		<typeAlias alias="loginCommand" type="com.careerlog.entity.loginCommand" />
 		<typeAlias alias="friend" type="com.careerlog.entity.Friend"/>
 		<typeAlias alias="message" type="com.careerlog.entity.Message"/>
+		<typeAlias alias="page" type="com.careerlog.entity.Page"/>
 	</typeAliases>
 		
 	<plugins>
-		<plugin interceptor="com.careerlog.interceptor.PaginationInterceptor"></plugin>
+		  <plugin interceptor="com.careerlog.interceptor.PaginationInterceptor">
+		  	<!--  <property name="dialect" value="mysql"/>-->
+		 	<property name="databaseType" value="mysql"/>
+		  </plugin>
 	</plugins>
 
 	<mappers>

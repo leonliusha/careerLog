@@ -5,8 +5,8 @@ import java.util.HashMap;
 public class Page<T> {
 	//page number, default page number is 1
 	private int start=1;
-	//how many records shown on page, default is 20
-	private int pageSize = 20;
+	//how many records shown on page, default is 15
+	private int pageSize = 15;
 	//total number of records
 	private int totalRecord;
 	//total pages
@@ -16,6 +16,12 @@ public class Page<T> {
 	//all other parameters
 	private Map<String,Object> params = new HashMap<String, Object>();
 
+	public Map<String, Object> getParams() {
+		return params;
+	}
+	public void setParams(String key, Object value) {
+		this.params.put(key, value);
+	}
 	public int getStart() {
 		return start;
 	}

@@ -69,8 +69,8 @@ public class PaginationInterceptor implements Interceptor{
 	//interceptorChain.pluginAll(StatementHandler)----> target=interceptor.plugin(target)
 	@Override
 	public Object plugin(Object target) {
-		Plugin.wrap(target, this);
-		return null;
+	 return	Plugin.wrap(target, this);
+		
 	}
 	
 	

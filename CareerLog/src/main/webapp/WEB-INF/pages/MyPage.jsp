@@ -12,7 +12,7 @@
  <h2>user name is:${fetchedUser.userName}</h2>
  <div class="contentSection">
  	<div class="sectionName"><a href="${pageContext.request.contextPath}/friends/${fetchedUser.userName}"><spring:message code="common.friends.friends"/>${friendsCount}</a></div>
- 	<div class="sectionName"><a href=""><spring:message code="common.messages.logs"/>${logsCount}</a></div>
+ 	<div class="sectionName"><a href="${pageContext.request.contextPath}/message/logs"><spring:message code="common.messages.logs"/>${logsCount}</a></div>
  	<div class="sectionName"><a href="${pageContext.request.contextPath}/message/newlog"><spring:message code="common.messages.writeLog"/></a></div>		
 </div>
  <form:form action="findPeople" method="POST" >
