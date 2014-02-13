@@ -16,7 +16,8 @@
  	<div class="sectionName"><a href="${pageContext.request.contextPath}/message/newlog"><spring:message code="common.messages.writeLog"/></a></div>		
 </div>
  <form:form action="findPeople" method="POST" >
- 	<spring:message code="common.search.people"/><input type="text" name="searchingPeopleName"/><input type="submit" value="<spring:message code="common.button.ok"/>"/>
+ 	<spring:message code="common.search.people"/><input type="text" name="searchingPeopleName"/>
+ 	<input type="submit" value="<spring:message code="common.button.ok"/>"/>
  </form:form>
 </body>
 </html>

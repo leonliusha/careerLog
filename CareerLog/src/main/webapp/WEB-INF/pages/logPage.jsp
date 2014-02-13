@@ -14,7 +14,7 @@
 			${message.title}
 		</div>
 		<div class="itemContent">
-			<textarea text="${message.text}"></textarea>
+			${message.text}"
 		</div>
 	</div>
 </body>

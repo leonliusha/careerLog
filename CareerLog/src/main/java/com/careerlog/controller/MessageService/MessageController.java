@@ -39,11 +39,9 @@ public class MessageController {
 		User user = (User)session.getAttribute("user");
 		message.setUserId(user.getUserId());
 		message.setUserName(user.getUserName());
-		Date date = new Date();
-		Timestamp timeStamp = new Timestamp(date.getTime());
+		Timestamp timeStamp = new Timestamp(new Date().getTime());
 		message.setCreationDate(timeStamp);
-		MessageType messageType = new MessageType();
-		String messageTypeId =  messageType.getLog();
+		String messageTypeId =  new MessageType().getLog();
 		message.setMessageTypeId(messageTypeId);
 		message.setViewCount(0);
 		message.setScore(0);
@@ -59,6 +57,7 @@ public class MessageController {
 		User user = (User)session.getAttribute("user");
 		page.setParams("userName", user.getUserName());
 		page.setParams("messageTypeId", new MessageType().getLog());
+		page.setStart(2);
 		page.setResults(messageService.queryMessageByPage(page));
 		int resultSize = page.getResults().size();
 		for(int i=0; i<resultSize;i++){
@@ -69,12 +68,24 @@ public class MessageController {
 		return "logsPage";	
 	}
 	
+	@RequestMapping(value="/logs/{paginationNumber}")
+	public String getLogsByPagination(@PathVariable("paginationNumber") int paginationNumber, ModelMap model, HttpSession session){
+		Page<Message> page = new Page<Message>();
+		User user = (User)session.getAttribute("user");
+		page.setParams("userName",user.getUserName());
+		page.setParams("messageTypeId", new MessageType().getLog());
+		page.setStart(paginationNumber);
+		page.setResults(messageService.queryMessageByPage(page));
+		return "logsPage";
+	}
+	
 	@RequestMapping(value="/logid/{messageId}")
 	public String getLogById(@PathVariable("messageId") int messageId, ModelMap model, HttpSession session){
 		Message message = messageService.queryMessageById(messageId);
 		model.addAttribute("message",message);
 		return "logPage";
 	}
+	
 	
 	private String getContentIntro(String content){
 		if(content==null)

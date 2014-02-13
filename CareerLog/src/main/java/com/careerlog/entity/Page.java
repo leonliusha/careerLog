@@ -6,7 +6,7 @@ public class Page<T> {
 	//page number, default page number is 1
 	private int start=1;
 	//how many records shown on page, default is 15
-	private int pageSize = 15;
+	private int pageSize = 10;
 	//total number of records
 	private int totalRecord;
 	//total pages

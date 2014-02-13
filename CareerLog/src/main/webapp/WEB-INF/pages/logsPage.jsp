@@ -9,12 +9,20 @@
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/common.css' />" />
 </head>
 <body>
+	<div class="element_left">
+		<spring:message code="common.messages.total"/>${page.totalRecord}<spring:message code="common.messages.items"/>
+	</div>
+	<div class="element_left">
+		${page.totalPage}<spring:message code="common.messages.page"/>
+	</div>
 	<div class="sectionModel1">
 		<c:if test="${fn:length(page.results)>0}" >
 			<c:forEach items="${page.results}" var="log">
 				<div class="itemModel1">
 					<div class="itemTitle">
-					 ${log.title}
+						<a href="${pageContext.request.contextPath}/message/logid/${log.messageId}">
+						 	${log.title}
+						</a>
 					</div>
 					<div class="itemContent">
 						<a href="${pageContext.request.contextPath}/message/logid/${log.messageId}">
@@ -24,7 +32,21 @@
 				</div>
 			</c:forEach>
 		</c:if>
+	</div>
+	<div class="element_left">
+		<c:if test="${page.totalPage > 6}">
+			<c:forEach var="item" varStatus="status" begin="1" end="6">
+				<div class="pageNumberElement"><a href="${pageContext.request.contextPath}/message/logs/${status.index}">${status.index}</a></div>
+			</c:forEach>
+		</c:if>
 		
+		<c:if test="${page.totalPage <6}">
+			<c:forEach var="item" varStatus="status" begin="1" end="${page.totalPage}">
+				<div class="pageNumberElement"><a href="${pageContext.request.contextPath}/message/logs/${status.index}">${status.index}</a></div>
+			</c:forEach>
+			
+		</c:if>
+	
 	</div>
 </body>
 </html>
