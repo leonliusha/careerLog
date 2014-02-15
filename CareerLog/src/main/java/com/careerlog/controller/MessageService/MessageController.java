@@ -57,7 +57,7 @@ public class MessageController {
 		User user = (User)session.getAttribute("user");
 		page.setParams("userName", user.getUserName());
 		page.setParams("messageTypeId", new MessageType().getLog());
-		page.setStart(2);
+		page.setStart(1);
 		page.setResults(messageService.queryMessageByPage(page));
 		int resultSize = page.getResults().size();
 		for(int i=0; i<resultSize;i++){
