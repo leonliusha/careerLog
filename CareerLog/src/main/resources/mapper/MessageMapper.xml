@@ -18,6 +18,10 @@
 		<result property="parentId" column="parent_id"/>
 	</resultMap>
 	
+	<select id="queryAllMessages" resultMap="RMessage">
+		select * from Messages
+	</select>
+	
 	<select id="queryMessageCountById" parameterType="java.util.Map" resultType="int">
 		select COUNT(*) from Messages where user_id = #{userId} and message_type_id = #{messageTypeId}
 	</select>

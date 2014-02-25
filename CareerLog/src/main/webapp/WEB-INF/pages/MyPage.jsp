@@ -13,10 +13,15 @@
  <div class="contentSection">
  	<div class="sectionName"><a href="${pageContext.request.contextPath}/friends/${fetchedUser.userName}"><spring:message code="common.friends.friends"/>${friendsCount}</a></div>
  	<div class="sectionName"><a href="${pageContext.request.contextPath}/message/logs"><spring:message code="common.messages.logs"/>${logsCount}</a></div>
- 	<div class="sectionName"><a href="${pageContext.request.contextPath}/message/newlog"><spring:message code="common.messages.writeLog"/></a></div>		
+ 	<div class="sectionName"><a href="${pageContext.request.contextPath}/message/newlog"><spring:message code="common.messages.writeLog"/></a></div>
+ 	<div class="sectinoName"><a href="${pageContext.request.contextPath}/message/indexAllMessages">index all messages</a></div>		
 </div>
  <form:form action="findPeople" method="POST" >
  	<spring:message code="common.search.people"/><input type="text" name="searchingPeopleName"/>
+ 	<input type="submit" value="<spring:message code="common.button.ok"/>"/>
+ </form:form>
+ <form:form action="message/MessageSearching" method="POST">
+ 	<spring:message code="common.search.message"/><input type="text" name="queryString"/>
  	<input type="submit" value="<spring:message code="common.button.ok"/>"/>
  </form:form>
 </body>

@@ -18,6 +18,7 @@ import org.apache.ibatis.plugin.Plugin;
 import org.apache.ibatis.plugin.Invocation;
 import org.apache.ibatis.plugin.Signature;
 import org.apache.ibatis.scripting.defaults.DefaultParameterHandler;
+import org.apache.log4j.Logger;
 
 import com.careerlog.util.ReflectUtil;
 import com.careerlog.entity.Page;
@@ -26,6 +27,7 @@ import com.careerlog.entity.Page;
 public class PaginationInterceptor implements Interceptor{
 
 	private String databaseType;
+	private static Logger log = Logger.getLogger(PaginationInterceptor.class);
 	
 	@Override
 	public Object intercept(Invocation invocation) throws Throwable {
@@ -59,8 +61,8 @@ public class PaginationInterceptor implements Interceptor{
 				pageSql = getMysqlPageSql(page,sqlBuffer);
 			else if("oracle".equalsIgnoreCase(databaseType))
 				pageSql = getOraclePageSql(page,sqlBuffer);
-			
 			ReflectUtil.setFieldValue(boundSql,"sql",pageSql);
+			log.info("intercepted page sql is"+pageSql.toString());
 		}
 		return invocation.proceed();
 	}

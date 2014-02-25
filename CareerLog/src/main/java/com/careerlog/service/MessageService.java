@@ -11,6 +11,11 @@ import com.careerlog.entity.Page;
 
 @Service(value="messageService")
 public class MessageService extends SqlSessionDaoSupport{
+	
+	public List<Message> queryAllMessages(){
+		return getSqlSession().selectList("MessageMapper.queryAllMessages");
+	}
+	
 	public int queryMessageCountByUserName(Map<String,String> queryInfo){
 		return getSqlSession().selectOne("MessageMapper.queryMessageCountByUserName",queryInfo);
 	}

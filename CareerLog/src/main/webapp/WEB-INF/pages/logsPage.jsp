@@ -15,8 +15,8 @@
 	<div class="element_left">
 		${page.totalPage}<spring:message code="common.messages.page"/>
 	</div>
-	<div class="sectionModel1">
 		<c:if test="${fn:length(page.results)>0}" >
+		<div class="sectionModel1">
 			<c:forEach items="${page.results}" var="log">
 				<div class="itemModel1">
 					<div class="itemTitle">
@@ -31,8 +31,9 @@
 					</div>
 				</div>
 			</c:forEach>
+		</div>
 		</c:if>
-	</div>
+	
 	<div class="element_left">
 		<c:if test="${page.totalPage > 6}">
 			<c:forEach var="item" varStatus="status" begin="1" end="6">

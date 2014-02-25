@@ -26,11 +26,13 @@ public class ReflectUtil {
 		Field field = null;
 		for(Class<?> clazz = object.getClass(); clazz != Object.class; clazz= clazz.getSuperclass()){
 			try {
-				field = clazz.getDeclaredField(fieldName);
-				break;
+				if(clazz.getDeclaredField(fieldName)!=null){
+					field = clazz.getDeclaredField(fieldName);
+					break;
+				}
 			} catch (NoSuchFieldException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				//e.printStackTrace();
 			} catch (SecurityException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
