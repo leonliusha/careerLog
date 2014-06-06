@@ -49,7 +49,7 @@ public class ProfileController {
 	}
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public String HomePageController(HttpServletRequest request, ModelMap model, HttpSession session){
+	public String HomePageController( ModelMap model, HttpSession session){
 		User user = (User)session.getAttribute("user");
 		MessageType messageType= new MessageType();
 		if(user==null)
@@ -61,9 +61,6 @@ public class ProfileController {
 			queryInfo.put("userName", user.getUserName());
 			queryInfo.put("messageTypeId", messageType.getLog());
 			int logsCount = messageService.queryMessageCountByUserName(queryInfo).intValue();
-			System.out.println("userName is "+queryInfo.get("userName"));
-			System.out.println("messageTypeId is "+queryInfo.get("messageTypeId"));
-			System.out.println("logsCount is :"+logsCount);
 			model.addAttribute("fetchedUser", user);
 			model.addAttribute("friendsCount",friendsCount);
 			model.addAttribute("logsCount",logsCount);
