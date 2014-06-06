@@ -35,12 +35,12 @@ public class ProfileController {
 		User user = (User)session.getAttribute("user");
 		MessageType messageType= new MessageType();
 		//get the count of friends
-		int friendsCount = friendService.friendsCount(user.getUserId());
+		int friendsCount = friendService.friendsCount(user.getUserId()).intValue();
 		//get the count of logs
 		Map<String,String> queryInfo = new HashMap<String, String>();
 		queryInfo.put("userName", user.getUserName());
 		queryInfo.put("messageTypeId", messageType.getLog());
-		int logsCount = messageService.queryMessageCountByUserName(queryInfo);
+		int logsCount = messageService.queryMessageCountByUserName(queryInfo).intValue();
 		
 		model.addAttribute("fetchedUser", user);
 		model.addAttribute("friendsCount",friendsCount);
@@ -56,11 +56,11 @@ public class ProfileController {
 			return "forward:login";
 		else{
 			//int userId = Integer.parseInt((String)request.getAttribute("userId"));
-			int friendsCount = friendService.friendsCount(user.getUserId());
+			int friendsCount = friendService.friendsCount(user.getUserId()).intValue();
 			Map<String,String> queryInfo = new HashMap<String, String>();
 			queryInfo.put("userName", user.getUserName());
 			queryInfo.put("messageTypeId", messageType.getLog());
-			int logsCount = messageService.queryMessageCountByUserName(queryInfo);
+			int logsCount = messageService.queryMessageCountByUserName(queryInfo).intValue();
 			System.out.println("userName is "+queryInfo.get("userName"));
 			System.out.println("messageTypeId is "+queryInfo.get("messageTypeId"));
 			System.out.println("logsCount is :"+logsCount);
@@ -74,12 +74,12 @@ public class ProfileController {
 	@RequestMapping(value="/{fetchUserName}",method=RequestMethod.GET)
 	public String HomePageController(@PathVariable("fetchUserName") String fetchUserName, ModelMap model){
 		User fetchedUser = userService.fetchUserByUserName(fetchUserName);
-		int friendsCount = friendService.friendsCount(fetchedUser.getUserId());
+		int friendsCount = friendService.friendsCount(fetchedUser.getUserId()).intValue();
 		MessageType messageType= new MessageType();
 		Map<String,String> queryInfo = new HashMap<String, String>();
 		queryInfo.put("userName", fetchedUser.getUserName());
 		queryInfo.put("messageTypeId",messageType.getLog());
-		int logsCount = messageService.queryMessageCountByUserName(queryInfo);
+		int logsCount = messageService.queryMessageCountByUserName(queryInfo).intValue();
 		System.out.println("userName is "+queryInfo.get("userName"));
 		System.out.println("messageTypeId is "+queryInfo.get("messageTypeId"));
 		System.out.println("logsCount is :"+logsCount);

@@ -20,7 +20,7 @@ public class FriendService {
 		friendDao.insertFriend("FriendMapper.insertFriend", friend);
 	}
 	
-	public int friendsCount(int userId){
+	public Integer friendsCount(int userId){
 		return friendDao.friendsCount("FriendMapper.friendsCount", userId);
 	}
 	

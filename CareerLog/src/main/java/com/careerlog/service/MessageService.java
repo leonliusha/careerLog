@@ -16,7 +16,7 @@ public class MessageService extends SqlSessionDaoSupport{
 		return getSqlSession().selectList("MessageMapper.queryAllMessages");
 	}
 	
-	public int queryMessageCountByUserName(Map<String,String> queryInfo){
+	public Integer queryMessageCountByUserName(Map<String,String> queryInfo){
 		return getSqlSession().selectOne("MessageMapper.queryMessageCountByUserName",queryInfo);
 	}
 	

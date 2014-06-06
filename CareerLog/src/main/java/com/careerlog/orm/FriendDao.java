@@ -10,7 +10,7 @@ public class FriendDao extends SqlSessionDaoSupport{
 		getSqlSession().insert(key, object);
 	}
 	
-	public int friendsCount(String key, Serializable id){
+	public Integer friendsCount(String key, Serializable id){
 		return getSqlSession().selectOne(key, id);
 	}
 	

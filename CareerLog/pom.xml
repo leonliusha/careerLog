@@ -15,8 +15,20 @@
   	<aspectj.version>1.6.10</aspectj.version>
   </properties>
   
-  <!-- spring begin -->
   <dependencies>
+  	<dependency>
+  		<groupId>javax.servlet</groupId>
+  		<artifactId>servlet-api</artifactId>
+  		<version>2.4</version>
+  		<scope>provided</scope>
+  	</dependency>
+  	<dependency>
+  		<groupId>javax.servlet</groupId>
+  		<artifactId>jsp-api</artifactId>
+  		<version>2.0</version>
+  		<scope>provided</scope>
+  	</dependency>
+  <!-- spring begin -->
   	<dependency>
   	  <groupId>org.springframework</groupId>
   	  <artifactId>spring-core</artifactId>
