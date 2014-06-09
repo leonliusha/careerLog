@@ -19,6 +19,12 @@
 		</context:component-scan>
 		<mvc:resources mapping="/resources/**" location="/resources/" />
 		
+		<!--
+		<mvc:interceptors>
+			  <bean class="com.careerlog.interceptor.RequestAndResponseInterceptor"/>
+		</mvc:interceptors>
+		-->
+		
 		<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"></bean>
 		<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"></bean>
 		

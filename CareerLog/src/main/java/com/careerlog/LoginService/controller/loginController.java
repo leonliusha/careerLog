@@ -13,13 +13,14 @@ import javax.servlet.http.HttpSession;
 
 import java.util.List;
 
+import com.careerlog.common.GenericController;
 import com.careerlog.entity.loginCommand;
 import com.careerlog.service.UserService;
 import com.careerlog.entity.User;
 import com.careerlog.service.FriendService;
 @Controller
 @RequestMapping(value="login")
-public class loginController {
+public class loginController extends GenericController{
 	@Resource(name="userService")
 	UserService userService;
 	@Resource(name="friendService")
@@ -34,7 +35,7 @@ public class loginController {
 	
 	@RequestMapping(method=RequestMethod.POST)
 	public String doLogin(@ModelAttribute("loginCommand") loginCommand loginCommand, 
-								HttpSession session, ModelMap model, HttpServletRequest request,RedirectAttributes redirectAttrs){
+								 ModelMap model, HttpServletRequest request,RedirectAttributes redirectAttrs){
 		//clear the command object from session 
 		//satus.setComplete();
 		User user = userService.queryUserByNameAndPassword(loginCommand);
@@ -46,7 +47,7 @@ public class loginController {
 		else{
 			//List<User> friends = userService.queryFriendById(user.getUserId());
 			//int friendsCount = friendService.friendsCount(user.getUserId());
-			session.setAttribute("user", user);
+			setCurrentUser(user);
 			//model.addAttribute("userName", user.getUserName());
 			//model.addAttribute("friendsCount",friendsCount);
 			//request.setAttribute("userId", user.getUserId());

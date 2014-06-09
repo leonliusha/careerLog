@@ -6,22 +6,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.validation.BindingResult;
 import org.springframework.ui.ModelMap;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import com.careerlog.service.UserService;
+import com.careerlog.common.GenericController;
 import com.careerlog.entity.User;
 @Controller
 @RequestMapping(value="/signIn")
-public class signinController {
+public class signinController extends GenericController{
 
 	@Resource(name="userService")
 	private UserService userService;
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public String signinHandler(@ModelAttribute("User") User user, BindingResult result,SessionStatus status, ModelMap model,HttpSession session){
+	public String signinHandler(@ModelAttribute("User") User user, BindingResult result,SessionStatus status, ModelMap model){
 		userService.insertUser(user);
-		session.setAttribute("user",user);
+		setCurrentUser(user);
 		model.addAttribute("UserId", user.getUserId());
 		return "MyPage";
 	}

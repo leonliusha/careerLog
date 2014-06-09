@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.careerlog.common.GenericController;
 import com.careerlog.entity.loginCommand;
 import com.careerlog.entity.User;
 import com.careerlog.service.FriendService;
@@ -22,7 +23,7 @@ import com.careerlog.util.MessageType;
 
 @Controller
 @RequestMapping(value="/MyPage")
-public class ProfileController {
+public class ProfileController extends GenericController{
 	@Resource(name="userService")
 	UserService userService;
 	@Resource(name="friendService")
@@ -31,8 +32,12 @@ public class ProfileController {
 	MessageService messageService;
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public String LoginHomePageController(ModelMap model, HttpSession session){
-		User user = (User)session.getAttribute("user");
+	public String LoginHomePageController(ModelMap model){
+		User user = null;
+		Object object = getCurrentUser();
+		if(object == null && !(object instanceof User))
+			return "login";
+		user = (User)object;
 		MessageType messageType= new MessageType();
 		//get the count of friends
 		int friendsCount = friendService.friendsCount(user.getUserId()).intValue();
@@ -40,8 +45,7 @@ public class ProfileController {
 		Map<String,String> queryInfo = new HashMap<String, String>();
 		queryInfo.put("userName", user.getUserName());
 		queryInfo.put("messageTypeId", messageType.getLog());
-		int logsCount = messageService.queryMessageCountByUserName(queryInfo).intValue();
-		
+		int logsCount = messageService.queryMessageCountByUserName(queryInfo).intValue();	
 		model.addAttribute("fetchedUser", user);
 		model.addAttribute("friendsCount",friendsCount);
 		model.addAttribute("logsCount",logsCount);
@@ -49,8 +53,12 @@ public class ProfileController {
 	}
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public String HomePageController( ModelMap model, HttpSession session){
-		User user = (User)session.getAttribute("user");
+	public String HomePageController( ModelMap model){
+		User user = null;
+		Object object = getCurrentUser();
+		if(object == null && !(object instanceof User))
+			return "login";
+		user = (User)object;
 		MessageType messageType= new MessageType();
 		if(user==null)
 			return "forward:login";
@@ -77,9 +85,6 @@ public class ProfileController {
 		queryInfo.put("userName", fetchedUser.getUserName());
 		queryInfo.put("messageTypeId",messageType.getLog());
 		int logsCount = messageService.queryMessageCountByUserName(queryInfo).intValue();
-		System.out.println("userName is "+queryInfo.get("userName"));
-		System.out.println("messageTypeId is "+queryInfo.get("messageTypeId"));
-		System.out.println("logsCount is :"+logsCount);
 		model.addAttribute("friendsCount",friendsCount);
 		model.addAttribute("fetchedUser",fetchedUser);
 		model.addAttribute("logsCount",logsCount);

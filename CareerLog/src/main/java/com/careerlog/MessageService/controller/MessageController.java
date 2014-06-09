@@ -35,6 +35,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.careerlog.common.GenericController;
 import com.careerlog.entity.Message;
 import com.careerlog.entity.Page;
 import com.careerlog.entity.User;
@@ -42,7 +43,7 @@ import com.careerlog.service.MessageService;
 import com.careerlog.util.MessageType;
 @Controller
 @RequestMapping(value="/message")
-public class MessageController {
+public class MessageController extends GenericController {
 	@Resource(name="messageService")
 	MessageService messageService;
 	
@@ -53,8 +54,12 @@ public class MessageController {
 	}
 	
 	@RequestMapping(value="/newlog",method=RequestMethod.POST)
-	public String writeNewLog(@ModelAttribute("Message") Message message, HttpSession session, ModelMap model){
-		User user = (User)session.getAttribute("user");
+	public String writeNewLog(@ModelAttribute("Message") Message message, ModelMap model){
+		User user = null;
+		Object object = getCurrentUser();
+		if(object == null && !(object instanceof User))
+			return "login";
+		user = (User)object;
 		message.setUserId(user.getUserId());
 		message.setUserName(user.getUserName());
 		Timestamp timeStamp = new Timestamp(new Date().getTime());
@@ -64,15 +69,18 @@ public class MessageController {
 		message.setViewCount(0);
 		message.setScore(0);
 		message.setCommentCount(0);
-		System.out.println(message.toString());
 		messageService.insertMessage(message);
 		return "redirect:/MyPage";
 	}
 	
 	@RequestMapping(value="/logs",method=RequestMethod.GET)
-	public String getLogsByPagination(ModelMap model,HttpSession session){
+	public String getLogsByPagination(ModelMap model){
 		Page<Message> page = new Page<Message>();
-		User user = (User)session.getAttribute("user");
+		User user = null;
+		Object object = getCurrentUser();
+		if(object == null && !(object instanceof User))
+			return "login";
+		user = (User)object;
 		page.setParams("userName", user.getUserName());
 		page.setParams("messageTypeId", new MessageType().getLog());
 		page.setResults(messageService.queryMessageByPage(page));
@@ -87,9 +95,13 @@ public class MessageController {
 	}
 	
 	@RequestMapping(value="/logs/{pageNumber}")
-	public String getLogsByPageNumber(@PathVariable("pageNumber") int pageNumber, ModelMap model, HttpSession session){
+	public String getLogsByPageNumber(@PathVariable("pageNumber") int pageNumber, ModelMap model){
 		Page<Message> page = new Page<Message>();
-		User user = (User)session.getAttribute("user");
+		User user = null;
+		Object object = getCurrentUser();
+		if(object == null && !(object instanceof User))
+			return "login";
+		user = (User)object;
 		page.setParams("userName",user.getUserName());
 		page.setParams("messageTypeId", new MessageType().getLog());
 		page.setStart(pageNumber);
@@ -105,7 +117,7 @@ public class MessageController {
 	}
 	
 	@RequestMapping(value="/logid/{messageId}")
-	public String getLogById(@PathVariable("messageId") int messageId, ModelMap model, HttpSession session){
+	public String getLogById(@PathVariable("messageId") int messageId, ModelMap model){
 		Message message = messageService.queryMessageById(messageId);
 		model.addAttribute("message",message);
 		return "logPage";

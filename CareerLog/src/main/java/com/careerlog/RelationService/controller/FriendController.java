@@ -14,12 +14,13 @@ import javax.servlet.http.HttpSession;
 
 import java.util.List;
 
+import com.careerlog.common.GenericController;
 import com.careerlog.entity.User;
 import com.careerlog.entity.Friend;
 import com.careerlog.service.UserService;
 import com.careerlog.service.FriendService;
 @Controller
-public class FriendController {
+public class FriendController extends GenericController{
 	
 	@Resource(name="userService")
 	UserService userService;
@@ -43,21 +44,16 @@ public class FriendController {
 	}
 	
 	@RequestMapping(value="/findPeople/addUserToFriends",method=RequestMethod.POST)
-	public @ResponseBody String addUserToFriends(@RequestParam(value="friendId") String friendId,ModelMap model,HttpSession session){
-		System.out.println("friendId is"+friendId);
-		User user = (User)session.getAttribute("user");
+	public @ResponseBody String addUserToFriends(@RequestParam(value="friendId") String friendId,ModelMap model){
 		String returnText;
-		if(user==null){
+		User user = (User)getCurrentUser();
+		if(user==null)
 			return "login";
-		}
-		else{
-			int userId = user.getUserId();
-			friendService.insertFriend(new Friend(userId,Integer.parseInt(friendId)));
-			System.out.println("user id:"+userId+"friend id:"+friendId);
-			returnText = "<spring:message code='common.friends.add.success' />";
-			return returnText;
-		}
-		
+		int userId = user.getUserId();
+		friendService.insertFriend(new Friend(userId,Integer.parseInt(friendId)));
+		System.out.println("user id:"+userId+"friend id:"+friendId);
+		returnText = "<spring:message code='common.friends.add.success' />";
+		return returnText;
 	}
 	
 	@RequestMapping(value="/friends/{userName}")
