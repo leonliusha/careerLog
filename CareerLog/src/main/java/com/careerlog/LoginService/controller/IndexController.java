@@ -1,4 +1,4 @@
-package com.careerlog.controller;
+package com.careerlog.LoginService.controller;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,10 +13,10 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.careerlog.common.GenericController;
-import com.careerlog.entity.loginCommand;
-import com.careerlog.entity.User;
-import com.careerlog.service.FriendService;
-import com.careerlog.service.UserService;
+import com.careerlog.LoginService.entity.loginCommand;
+import com.careerlog.ProfileService.entity.User;
+import com.careerlog.RelationService.service.FriendService;
+import com.careerlog.ProfileService.service.UserService;
 
 @Controller
 @RequestMapping("/")

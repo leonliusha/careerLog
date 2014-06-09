@@ -21,7 +21,7 @@ import org.apache.ibatis.scripting.defaults.DefaultParameterHandler;
 import org.apache.log4j.Logger;
 
 import com.careerlog.util.ReflectUtil;
-import com.careerlog.entity.Page;
+import com.careerlog.MessageService.entity.Page;
 
 @Intercepts({@Signature(type=StatementHandler.class,method="prepare",args={Connection.class})})
 public class PaginationInterceptor implements Interceptor{

@@ -1,8 +1,8 @@
-package com.careerlog.orm;
+package com.careerlog.RelationService.orm;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import java.io.Serializable;
 import java.util.List;
-import com.careerlog.entity.User;
+import com.careerlog.ProfileService.entity.User;
 
 
 public class FriendDao extends SqlSessionDaoSupport{

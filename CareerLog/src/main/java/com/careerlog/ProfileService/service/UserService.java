@@ -1,13 +1,13 @@
-package com.careerlog.service;
+package com.careerlog.ProfileService.service;
 
 import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.careerlog.entity.User;
-import com.careerlog.orm.UserDao;
-import com.careerlog.entity.loginCommand;
+import com.careerlog.ProfileService.entity.User;
+import com.careerlog.ProfileService.orm.UserDao;
+import com.careerlog.LoginService.entity.loginCommand;
 
 @Service(value="userService")
 @Transactional(rollbackFor=Exception.class)

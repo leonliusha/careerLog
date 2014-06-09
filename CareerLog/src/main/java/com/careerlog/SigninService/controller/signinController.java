@@ -1,4 +1,4 @@
-package com.careerlog.controller;
+package com.careerlog.SigninService.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.SessionStatus;
@@ -10,9 +10,9 @@ import org.springframework.ui.ModelMap;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
-import com.careerlog.service.UserService;
+import com.careerlog.ProfileService.service.UserService;
 import com.careerlog.common.GenericController;
-import com.careerlog.entity.User;
+import com.careerlog.ProfileService.entity.User;
 @Controller
 @RequestMapping(value="/signIn")
 public class signinController extends GenericController{

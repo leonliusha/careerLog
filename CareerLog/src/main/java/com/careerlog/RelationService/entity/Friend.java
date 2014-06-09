@@ -1,4 +1,4 @@
-package com.careerlog.entity;
+package com.careerlog.RelationService.entity;
 
 public class Friend {
 

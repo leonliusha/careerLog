@@ -1,4 +1,4 @@
-package com.careerlog.entity;
+package com.careerlog.ProfileService.entity;
 
 public class User {  
     private int userId;  

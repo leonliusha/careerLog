@@ -1,13 +1,13 @@
-package com.careerlog.service;
+package com.careerlog.RelationService.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
-import com.careerlog.orm.FriendDao;
-import com.careerlog.entity.Friend;
-import com.careerlog.entity.User;
+import com.careerlog.RelationService.orm.FriendDao;
+import com.careerlog.RelationService.entity.Friend;
+import com.careerlog.ProfileService.entity.User;
 
 @Service(value="friendService")
 @Transactional(rollbackFor=Exception.class)

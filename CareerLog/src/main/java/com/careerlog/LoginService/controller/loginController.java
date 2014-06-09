@@ -1,4 +1,4 @@
-package com.careerlog.controller;
+package com.careerlog.LoginService.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,10 +14,10 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 import com.careerlog.common.GenericController;
-import com.careerlog.entity.loginCommand;
-import com.careerlog.service.UserService;
-import com.careerlog.entity.User;
-import com.careerlog.service.FriendService;
+import com.careerlog.LoginService.entity.loginCommand;
+import com.careerlog.ProfileService.service.UserService;
+import com.careerlog.ProfileService.entity.User;
+import com.careerlog.RelationService.service.FriendService;
 @Controller
 @RequestMapping(value="login")
 public class loginController extends GenericController{

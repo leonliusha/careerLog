@@ -1,6 +1,6 @@
-package com.careerlog.orm;
+package com.careerlog.ProfileService.orm;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
-import com.careerlog.entity.User;
+import com.careerlog.ProfileService.entity.User;
 import java.io.Serializable;
 import java.util.List;
 

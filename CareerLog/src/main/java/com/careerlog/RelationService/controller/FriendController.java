@@ -1,4 +1,4 @@
-package com.careerlog.controller.RelationService;
+package com.careerlog.RelationService.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,10 +15,10 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 import com.careerlog.common.GenericController;
-import com.careerlog.entity.User;
-import com.careerlog.entity.Friend;
-import com.careerlog.service.UserService;
-import com.careerlog.service.FriendService;
+import com.careerlog.ProfileService.entity.User;
+import com.careerlog.RelationService.entity.Friend;
+import com.careerlog.ProfileService.service.UserService;
+import com.careerlog.RelationService.service.FriendService;
 @Controller
 public class FriendController extends GenericController{
 	

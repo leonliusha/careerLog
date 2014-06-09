@@ -1,4 +1,4 @@
-package com.careerlog.entity;
+package com.careerlog.MessageService.entity;
 
 import java.sql.Timestamp;
 public class Message {

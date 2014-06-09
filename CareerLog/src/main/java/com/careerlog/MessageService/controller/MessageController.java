@@ -1,4 +1,4 @@
-package com.careerlog.controller.MessageService;
+package com.careerlog.MessageService.controller;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -36,10 +36,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.careerlog.common.GenericController;
-import com.careerlog.entity.Message;
-import com.careerlog.entity.Page;
-import com.careerlog.entity.User;
-import com.careerlog.service.MessageService;
+import com.careerlog.MessageService.entity.Message;
+import com.careerlog.MessageService.entity.Page;
+import com.careerlog.ProfileService.entity.User;
+import com.careerlog.MessageService.service.MessageService;
 import com.careerlog.util.MessageType;
 @Controller
 @RequestMapping(value="/message")

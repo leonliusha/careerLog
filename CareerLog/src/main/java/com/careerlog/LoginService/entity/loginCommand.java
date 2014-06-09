@@ -1,4 +1,4 @@
-package com.careerlog.entity;
+package com.careerlog.LoginService.entity;
 
 public class loginCommand {
 	private String userName;

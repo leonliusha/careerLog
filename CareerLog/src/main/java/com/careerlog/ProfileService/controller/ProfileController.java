@@ -1,4 +1,4 @@
-package com.careerlog.controller.ProfileService;
+package com.careerlog.ProfileService.controller;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.careerlog.common.GenericController;
-import com.careerlog.entity.loginCommand;
-import com.careerlog.entity.User;
-import com.careerlog.service.FriendService;
-import com.careerlog.service.MessageService;
-import com.careerlog.service.UserService;
+import com.careerlog.LoginService.entity.loginCommand;
+import com.careerlog.ProfileService.entity.User;
+import com.careerlog.RelationService.service.FriendService;
+import com.careerlog.MessageService.service.MessageService;
+import com.careerlog.ProfileService.service.UserService;
 import com.careerlog.util.MessageType;
 
 @Controller

@@ -1,4 +1,4 @@
-package com.careerlog.service;
+package com.careerlog.MessageService.service;
 
 import org.springframework.stereotype.Service;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
@@ -6,8 +6,8 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 import java.util.List;
 import java.util.Map;
 
-import com.careerlog.entity.Message;
-import com.careerlog.entity.Page;
+import com.careerlog.MessageService.entity.Message;
+import com.careerlog.MessageService.entity.Page;
 
 @Service(value="messageService")
 public class MessageService extends SqlSessionDaoSupport{
