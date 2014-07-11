@@ -1,6 +1,7 @@
 package com.careerlog.MessageService.controller;
 import java.io.File;
 import java.io.IOException;
+import java.io.StringReader;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
@@ -10,6 +11,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
@@ -26,6 +28,7 @@ import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopScoreDocCollector;
+import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
 import org.springframework.stereotype.Controller;
@@ -34,6 +37,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.careerlog.common.GenericController;
 import com.careerlog.MessageService.entity.Message;
@@ -131,7 +135,7 @@ public class MessageController extends GenericController {
 			throw new Exception("Document directory '"+file.getAbsolutePath()+"' does not exist or is not readable, check the path");
 		}
 		//open that index
-		FSDirectory directory = FSDirectory.open(file);
+		Directory directory = FSDirectory.open(file);
 		//unlock index directory if the directory has been locked by previous unsuccessful indexing process.
 		if(IndexWriter.isLocked(directory))
 			IndexWriter.unlock(directory);
@@ -149,12 +153,14 @@ public class MessageController extends GenericController {
 		for(int i=0;i<allMessages.size();i++){
 			Message message = allMessages.get(i);
 			Document document = new Document();
+			TokenStream titleTokenStream = analyzer.tokenStream("title", new StringReader(message.getTitle()));
+			TokenStream contentTokenStream = analyzer.tokenStream("content", new StringReader(message.getText()));
 			//adding each Field into Document
 			Field idField = new IntField("id",message.getMessageId(),Field.Store.NO);
 			document.add(idField);
-			Field titleField = new TextField("title",message.getTitle(),Field.Store.YES);
+			Field titleField = new TextField("title", titleTokenStream);
 			document.add(titleField);
-			Field contentField = new TextField("content",message.getText(),Field.Store.YES);
+			Field contentField = new TextField("content",contentTokenStream);
 			document.add(contentField);
 			Field creationField = new LongField("createdDate",message.getCreationDate().getTime(),Field.Store.NO);
 			document.add(creationField);
@@ -180,8 +186,7 @@ public class MessageController extends GenericController {
 		finally{			
 			writer.commit();
 			writer.close();
-			analyzer.close();
-			directory.close();
+			
 		}
 		long end = System.currentTimeMillis();
 		return "MyPage";

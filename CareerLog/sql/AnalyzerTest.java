@@ -26,7 +26,7 @@ public static void analyze(Analyzer analyzer, String text) throws Exception {
 	Set s = new HashSet();
 	Map m = new HashMap();
 	List l1 = new ArrayList();
-   System.out.println("分词器：" + analyzer.getClass());
+   System.out.println("浼熷ぇ" + analyzer.getClass());
    TokenStream tokenStream = analyzer.tokenStream("content", new StringReader(text));
    tokenStream.addAttribute(CharTermAttribute.class);  
    tokenStream.reset();
@@ -40,7 +40,7 @@ public static void analyze(Analyzer analyzer, String text) throws Exception {
 
 public static void main(String[] args) throws Exception {
    String enText = "China is a great country!";
-   String chText = "昨天，一阵雷阵雨后，空气异常地清新！";
+   String chText = "涓浗鏄竴涓紵澶х殑鍥藉";
    SimpleAnalyzer analyzer1 = new SimpleAnalyzer(Version.LUCENE_46);
    analyze(analyzer1,enText);
    analyze(analyzer1,chText);
@@ -49,7 +49,7 @@ public static void main(String[] args) throws Exception {
    analyze(analyzer2,chText);
    StandardAnalyzer analyzer3 = new StandardAnalyzer(Version.LUCENE_46);
    analyze(analyzer3,enText);
-   analyze(analyzer3,chText);//逐个字切分
+   analyze(analyzer3,chText);
    WhitespaceAnalyzer analyzer4 = new WhitespaceAnalyzer(Version.LUCENE_46);
    analyze(analyzer4,enText);
    analyze(analyzer4,chText);

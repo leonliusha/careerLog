@@ -24,7 +24,7 @@ public class ReflectUtil {
 	
 	public static Field getField(Object object, String fieldName){
 		Field field = null;
-		for(Class<?> clazz = object.getClass(); clazz != Object.class; clazz= clazz.getSuperclass()){
+		for(Class<? extends Object> clazz = object.getClass(); clazz != Object.class; clazz= clazz.getSuperclass()){
 			try {
 				if(clazz.getDeclaredField(fieldName)!=null){
 					field = clazz.getDeclaredField(fieldName);
