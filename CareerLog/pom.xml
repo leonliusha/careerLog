@@ -188,11 +188,6 @@
     		<configuration>
     			<source>${jdk.version}</source>
     			<target>${jdk.version}</target>
-    			<archive>
-    				<manifest>
-    					<addClasspath>true</addClasspath>
-    				</manifest>
-    			</archive>
     		</configuration>
     	</plugin>
     	<plugin>
