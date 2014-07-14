@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="MessageMapper">
-	<resultMap type="com.careerlog.entity.Message" id="RMessage">
+	<resultMap type="com.careerlog.MessageService.entity.Message" id="RMessage">
 		<id property="messageId" column="message_id"/>
 		<result property="userId" column="user_id"/>
 		<result property="user_name" column="userName"/>	

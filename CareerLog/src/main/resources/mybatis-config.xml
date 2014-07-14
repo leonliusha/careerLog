@@ -14,11 +14,11 @@
 	</settings>
 
 	<typeAliases>
-		<typeAlias alias="user" type="com.careerlog.entity.User"/>
-		<typeAlias alias="loginCommand" type="com.careerlog.entity.loginCommand" />
-		<typeAlias alias="friend" type="com.careerlog.entity.Friend"/>
-		<typeAlias alias="message" type="com.careerlog.entity.Message"/>
-		<typeAlias alias="page" type="com.careerlog.entity.Page"/>
+		<typeAlias alias="user" type="com.careerlog.ProfileService.entity.User"/>
+		<typeAlias alias="loginCommand" type="com.careerlog.LoginService.entity.loginCommand" />
+		<typeAlias alias="friend" type="com.careerlog.RelationService.entity.Friend"/>
+		<typeAlias alias="message" type="com.careerlog.MessageService.entity.Message"/>
+		<typeAlias alias="page" type="com.careerlog.MessageService.entity.Page"/>
 	</typeAliases>
 		
 	<plugins>

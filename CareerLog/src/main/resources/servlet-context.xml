@@ -17,6 +17,7 @@
 			<context:exclude-filter type="annotation"
 									expression="org.springframework.stereotype.Service" />
 		</context:component-scan>
+
 		<mvc:resources mapping="/resources/**" location="/resources/" />
 		
 		<!--
